@@ -10,7 +10,6 @@ def run_evaluation(request, name, id):
     if request.method == 'GET':
         code = request.GET.get('code')
         data = getTestCases()
-        print(data)
     
         return render(request, 'passed_failed_tests.html', {'data': data, 'id' : id, 'code': code})
     
