@@ -1,0 +1,232 @@
+<html lang="en">
+  <head>
+    <!--flex grid boostrap-->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css" integrity="sha384-r4NyP46KrjDleawBgD5tp8Y7UzmLA05oM1iAEQ17CSuDqnUK2+k9luXQOfXJCJ4I" crossorigin="anonymous">
+    <!--toggle dropdown menu-->
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <!--Icon library-->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
+    
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
+    <link rel="preconnect" href="https://fonts.googleapis.com">      
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@1,400,500,600,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+    <link href="passed_failed_tests.css" rel="stylesheet">
+
+  </head>
+  <body>
+    <!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar-->
+    <div class="row">
+      <div class="navbar">
+
+        <div class="col-sm-1">
+          <div class="title"><a class="title" href="#home">AnonTester</a></div>
+        </div>
+
+        <!--courses--><!--courses--><!--courses--><!--courses--><!--courses--><!--courses--><!--courses-->
+        <div class="col-sm-2">
+          <div class="dropdown show" style="float:right">
+            <a class="meniu-option" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-caret-right-fill"></i>Courses
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Web courses</a>
+              <a class="dropdown-item" href="#">Your courses</a>
+            </div>
+          </div>
+        </div>
+        <!--courses--><!--courses--><!--courses--><!--courses--><!--courses--><!--courses--><!--courses-->
+
+
+        <!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments-->
+        <div class="col-sm-2">
+          <div class="dropdown show">
+            <a class="meniu-option" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-caret-right-fill"></i> Assignments
+            </a>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <a class="dropdown-item" href="#">Test 1</a>
+              <a class="dropdown-item" href="#">Test 2</a>
+              <a class="dropdown-item" href="#">Test 3</a>
+            </div>
+          </div>
+        </div>
+        <!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments--><!--assignments-->
+
+
+        <!--profile button--><!--profile button--><!--profile button--><!--profile button--><!--profile button--><!--profile button-->
+        <div class="col-sm-6">
+          <div class="dropdown" style="float:right">
+            <button class="profile-button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="bi bi-person-circle profile-icon"></i>
+            </button>
+                <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#">Profile</a>
+                  <a class="dropdown-item" href="#">Classes</a>
+                  <a class="dropdown-item" href="#">Log out</a>
+                </div>
+          </div>
+        </div>
+        <!--profile button--><!--profile button--><!--profile button--><!--profile button--><!--profile button--><!--profile button-->
+
+      </div>
+    </div>
+    <!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar-->
+
+    <!--content-->
+    <div class="container center">
+      <!--results--><!--results--><!--results--><!--results--><!--results--><!--results-->
+      <div class="row">
+        <div class="col-6">
+          <div class="card-default">
+            <div class="row">
+              <div class="col-6">
+                <h2 class="card-title">Here are your results:</h2>
+                <hr class="gray line" style="height: 3px;">
+                <p class="card-text">[2 passed/3 warning/1 failed]</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!--results--><!--results--><!--results--><!--results--><!--results--><!--results-->
+
+      <div class="row">
+        <div class="col-6">
+          <div class="card csuccess" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 1</h2>
+                <hr class="green line" style="height: 3px;">
+                <p class="card-text">Well done!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-check-circle-fill icon-test check"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card csuccess" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 2</h2>
+                <hr class="green line" style="height: 3px;">
+                <p class="card-text">Well done!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-check-circle-fill icon-test check"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="card cwarning" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 3</h2>
+                <hr class="yellow line" style="height: 3px;">
+                <p class="card-text">Warning!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card cwarning" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 4</h2>
+                <hr class="yellow line" style="height: 3px;">
+                <p class="card-text">Warning!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-6">
+          <div class="card cwarning" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 5</h2>
+                <hr class="yellow line" style="height: 3px;">
+                <p class="card-text">Warning!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-6">
+          <div class="card cdanger" type="button">
+            <div class="row">
+              <div class="col-3">
+                <h2 class="card-title">Test 6</h2>
+                <hr class="red line" style="height: 3px;">
+                <p class="card-text">Failed!</p>
+              </div>
+              <div class="col-8 ">
+                <i class="bi bi-x-circle-fill icon-test fail"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons-->
+      <div class="row">
+        <div class="col-4">
+          <button class="retry-button">
+            <p class="retry-text">
+              Retry
+            </p>
+            <i class="bi bi-arrow-clockwise retry-icon"></i>
+          </button>
+        </div>
+        <div class="col-4">
+          <button class="next-button">
+            <p class="retry-text">
+              Next
+            </p>
+            <i class="bi bi-arrow-right-circle-fill retry-icon"></i>
+          </button>
+        </div>
+      </div>
+      <!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons--><!--buttons-->
+    </div>
+    <!--content-->
+
+    <!--footer-->
+    <div class="footer">
+      <div class="row text-center">
+        <div class="col-6 padding-0">
+          <p class="s1">Any problems? Contact us at
+            <a href="mailto:support@anontester.com" style="color:#c2a90c">support@anontester.com</a>
+          </p>
+        </div>
+        <div class="col-6 padding-0">
+          <p class="s2">
+            <a href="https://en.wikipedia.org/wiki/Terms_of_service" style="color:#c2a90c">Terms and conditions</a>
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--footer-->
+  </body> 
+</html>

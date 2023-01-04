@@ -1,0 +1,49 @@
+.login-button {
+  background-color: #000000;
+  color: #FFFFFF;
+  text-align: center;
+  /* Add round borders. */
+  border-radius: 10px;
+  padding-left: 85px;
+  padding-right: 85px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 16px;
+  font-family: "Source Sans Pro", sans-serif;
+  border:  none;
+  margin-top: 20px;
+}
+
+.email-input {
+  border:  1px solid #000000;
+  background:  transparent;
+  padding:  10px 30px 10px 30px;
+  border-radius:  10px;
+  color:  rgb(0, 0, 0);
+  margin-top: 50px;
+}
+
+.login-form {
+  margin: auto;
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translate(0, -50%);
+  display:  flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title{
+  font-size: 30px;
+  color:#FFFFFF;
+  font-family: "Tahoma", sans-serif;
+  justify-content: center;
+}
+
+.subtitle{
+  font-size: 30px;
+  color:#000000;
+  margin-top:70px;
+}
+
