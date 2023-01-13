@@ -11,7 +11,6 @@ class Lesson(models.Model):
 class Lecture(models.Model):
     title = models.CharField(max_length=30)
     description = models.CharField(max_length=255)
-    index = models.IntegerField()
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
 class Test(models.Model):
@@ -19,8 +18,10 @@ class Test(models.Model):
     description = models.CharField(max_length=255)
     output_generator = models.CharField(max_length=255)
     no_test_cases = models.IntegerField()
-    index = models.IntegerField()
     save_sources = models.IntegerField()
+    homework = models.IntegerField()
+    due_date = models.DateTimeField()
+    start_date = models.DateTimeField()
     lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
 class Input(models.Model):
