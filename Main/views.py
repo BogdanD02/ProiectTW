@@ -15,4 +15,21 @@ def run_evaluation(request, name, id):
     
 def welcome(request, name):
     if request.method == 'GET':
+        if name == "David":
+            return render(request, 'welcome-prof.html', {'name': name})
         return render(request, 'welcome.html', {'name': name})
+
+def show_courses(request, name):
+    return render(request, 'view_courses.html')
+
+def add_course(request, name):
+    return render(request, 'adauga_curs.html')
+
+def show_tests(request, name):
+    pass
+
+def add_test(request, name):
+    return render(request, 'add_test.html')
+
+def browse_courses(request, name):
+    pass
