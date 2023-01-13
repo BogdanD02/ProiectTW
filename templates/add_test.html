@@ -16,6 +16,10 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="{% static 'css/add_test.css' %}" rel="stylesheet">
     <link href="{% static 'css/common.css' %}" rel="stylesheet">
+  
+    <script src="{% static 'js/parser/Ranges.js' %}"></script>
+    <script src="{% static 'js/parser/Literal.js' %}"></script>
+    <script src="{% static 'js/parser/AFD.js' %}"></script>
   </head>
   <body>
     <!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar-->
@@ -89,7 +93,8 @@
         <div class="card">
         
             <br><label for="lname">Input</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <p style="color: red" id="Error"></p>
+            <textarea rows="5" cols="35" id="input" onchange   = "myHandler();" onkeypress = "this.onchange();" onpaste    = "this.onchange();" oninput    = "this.onchange();"></textarea><br>
             <br><label for="lname">Expected output</label><br>
             <textarea rows="5" cols="35"></textarea><br>
 
