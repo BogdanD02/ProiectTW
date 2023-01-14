@@ -1,5 +1,5 @@
 const data = document.currentScript.dataset;
-const code = data.code;
+const code = document.getElementById("code-editor");
 const server_data = data.data;
 
 // init pyodide and show sys.version when it's loaded successfully
@@ -17,26 +17,39 @@ async function main() {
   async function evaluatePython() {
     let pyodide = await pyodideReadyPromise;
     try {
-        console.log(code);
-        console.log(server_data);
-    
-        let arr = server_data.split("\n");
+        document.getElementById("title").innerHTML = "Running Tests... please wait";
+        
+        var output = [];
+        await fetch('/tests/generateOutput/' + server_data, {method: 'GET', 
+            headers:{
+            'Accept': 'application/json',
+            'X-Requested-With': 'XMLHttpRequest', //Necessary to work with request.is_ajax()
+        }})
+            .then((response) => response.json())
+            .then((data) => output = data["testCases"]);
+        console.log(output);
+        
         let results = [];
-        for(let i = 0; i < arr.length; i++) {
-            if(arr[i].length == 0)
-                continue;
+        for(let i = 0; i < output.length; i++) {
+            var input = output[i]["input"];
+            var Poutput = output[i]["output"];
 
-            let data_arr = arr[i].split(";")
-            input_x = data_arr[0];
-            input_y = data_arr[1];
-            input_z = data_arr[2];
+            var keys = Object.keys(input);    
+            for(var j = 0; j < keys.length; j++) {
+                pyodide.globals.set(keys[j], input[keys[j]]);
+            }
 
-            pyodide.globals.set('X', parseInt(input_x));
-            pyodide.globals.set('Y', parseInt(input_y));
+            let res = pyodide.runPython(code.value);
+            let correct = true;
 
-            let res = pyodide.runPython(code);
-
-            results.push((pyodide.globals.get("Z") == parseInt(input_z)));
+            keys = Object.keys(Poutput); 
+            for(var j = 0; j < keys.length; j++) {
+                if(Poutput[keys[j]] != pyodide.globals.get(keys[j])) {
+                    correct = false;
+                    break;
+                }
+            }
+            results.push(correct);
         }
 
         let noTrue = 0;
@@ -48,11 +61,10 @@ async function main() {
                 noFalse++;
         }
 
-        console.log(results);
-
         const title = document.getElementById("title");
         title.innerHTML = "[" + noTrue + " passed / " + noFalse + " failed]";
 
+        document.getElementById("clearable").innerHTML = "<div id=\"results\"> </div>"; 
         const resultsArea = document.getElementById("results");
         
         for(let rows = 0; rows < results.length / 2; rows++) {
@@ -105,5 +117,3 @@ async function main() {
       console.log(err);
     }
   }
-
-  let x = evaluatePython();

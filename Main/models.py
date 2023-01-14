@@ -22,7 +22,6 @@ class Test(models.Model):
     homework = models.IntegerField()
     due_date = models.DateTimeField()
     start_date = models.DateTimeField()
-    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
 
 class Input(models.Model):
     data_type = models.CharField(max_length=30)

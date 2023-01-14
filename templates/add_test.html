@@ -76,15 +76,20 @@
     <!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar-->
 
     <!--content-->
+    
     <div class="row">
+    <form method="post" id="form">
+    {% csrf_token %}
 
       <div class="column">
         <div class="card">
 
             <label for="fname">Test name</label><br>
             <input type="text" id="title" name="title"><br>
+            <p style="color: red" id="ErrorT"></p>
             <br><label for="lname">Description</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <textarea rows="5" cols="35" name="Description" id="descr"></textarea><br>
+            <p style="color: red" id="ErrorD"></p>
               
         </div>
       </div>
@@ -94,9 +99,10 @@
         
             <br><label for="lname">Input</label><br>
             <p style="color: red" id="Error"></p>
-            <textarea rows="5" cols="35" id="input" onchange   = "myHandler();" onkeypress = "this.onchange();" onpaste    = "this.onchange();" oninput    = "this.onchange();"></textarea><br>
+            <textarea rows="5" cols="35" id="input" name="InputData" onchange   = "myHandler();" onkeypress = "this.onchange();" onpaste    = "this.onchange();" oninput    = "this.onchange();"></textarea><br>
             <br><label for="lname">Expected output</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <textarea rows="5" cols="35" name="OutputScript" id="Output"></textarea><br>
+            <p style="color: red" id="ErrorO"></p>
 
             <div class="dropdown">
                 <button class="dropbtn">Mark</button>
@@ -121,18 +127,46 @@
         <div class="card">
            
             <label for="start">From:</label>
-            <input type="date" id="start" name="trip-start" value="2023-01-20" min="2023-01-01" max="2024-12-31">
-            <input type="time" id="appt" name="appt" min="08:00" max="19:00" required>
+            <input type="date" id="start" name="startDate" innerHTML="2023-01-20" min="2023-01-01" max="2024-12-31">
+            <input type="time" id="appt" name="startHr" min="08:00" max="19:00" required>
             <label for="start">To:</label>
-            <input type="date" id="stop" name="trip-stop" value="2023-01-20" min="2023-01-01" max="2024-12-31">
-            <input type="time" id="appt" name="appt" min="08:00" max="19:00" required>
+            <input type="date" id="stop" name="stopDate" innerHTML="2023-01-20" min="2023-01-01" max="2024-12-31">
+            <input type="time" id="appt" name="stopHr" min="08:00" max="19:00" required>
 
 
-            <br><button class="button1" role="button">Add test</button>
-              
+            <br><button class="button1" role="button" id="submit">Add test</button>
+            <script type="text/javascript">
+              $('#submit').on('click',function() {
+                document.getElementById("ErrorT").innerHTML = "";
+                document.getElementById("ErrorD").innerHTML = "";
+
+                var title = document.getElementById("title");
+                var descr = document.getElementById("descr");
+                var err = document.getElementById("Error");
+                var input = document.getElementById("input");
+                var output = document.getElementById("Output");
+
+                if(title.value === "" || descr.value === "" || err.innerHTML !== "" || input.value === "" || output.value === "") {
+                  if(title.value === "")
+                    document.getElementById("ErrorT").innerHTML = "Please fill the title.";
+                  if(descr.value === "")
+                    document.getElementById("ErrorD").innerHTML = "Please fill the description.";
+                  if(input.value === "")
+                    document.getElementById("Error").innerHTML = "Please fill the input format.";
+                  if(output.value === "")
+                    document.getElementById("ErrorO").innerHTML = "Please fill the output script.";
+                  return false;
+                }
+                // if you want to submit the form here 
+                console.log(1);
+                $('#form').submit();
+              });
+            </script>
+            
         </div>
       </div>
-
+    
+    </form>
     </div>
     <!--content-->
 

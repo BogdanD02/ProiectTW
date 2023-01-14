@@ -44,7 +44,7 @@ class FiniteAutomataParser {
             }
         }
         else if(this.currentState === "ExpectingID") {
-            if(this.currentLit !== null) {
+            if(this.currentLit !== null || keyword === "") {
                 err.innerHTML = "Unexpected literal: " + keyword;
                 return;
             }
@@ -106,7 +106,6 @@ class FiniteAutomataParser {
 
             this.currentState = "F";
             this.saveResults();
-            this.clear();
         }
         else if(this.currentState === "ExpectingValues") {
             if(keyword === "}") {
@@ -118,7 +117,6 @@ class FiniteAutomataParser {
                 this.currentState = "F";
                 this.currentCloser = "}";
                 this.saveResults();
-                this.clear();
             }
             else {
                 try {
@@ -190,19 +188,20 @@ class FiniteAutomataParser {
     }
 
     parseText(text, err) {
-        var textArr = text.split(/[\s,\n]+/)
+        var textArr = text.split(/[\s,\n]+/);
 
         for(var i = 0; i < textArr.length; i++) {
             if(this.currentState == "F") {
                 this.currentState = "ExpectingType";
+                this.clear();
             }
 
             this.takeAction(textArr[i],err);
         }
 
-        // if(this.currentState !== "F") {
-        //     err.innerHTML = "Incomplete data definition: " + this.currentState;
-        // }
+        if(this.currentState !== "F" && err.innerHTML === "") {
+            err.innerHTML = "Incomplete data definition: " + this.currentState;
+        }
 
         var i = this.results;
         this.results = [];

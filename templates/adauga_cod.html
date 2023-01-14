@@ -9,6 +9,9 @@
     <!--Icon library-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
     
+    <!-- install pyodide version 0.20.0 -->
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.20.0/full/pyodide.js"></script>
+
     <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1"/>
     <link rel="preconnect" href="https://fonts.googleapis.com">      
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -16,6 +19,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="{% static 'css/adauga_cod.css' %}" rel="stylesheet">
     <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <script src="{% static 'js/run_tests.js' %}" defer data-data="{{ data }}"></script>
   </head>
   <body>
     <!--navbar_student--><!--navbar_student--><!--navbar_student--><!--navbar_student-->
@@ -67,7 +71,7 @@
           </button>
           <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" href="#">Profile</a>
-            <a class="dropdown-item" href="#">Log out</a>
+            <a class="dropdown-item" href="/">Log out</a>
           </div>
         </div>
       </div>
@@ -82,14 +86,10 @@
       <!--enun_problema_cod--><!--enun_problema_cod--><!--enun_problema_cod--><!--enun_problema_cod--><!--enun_problema_cod-->
       <div class="col-6 coloana1">
         <div class="enunt-problema">
-          <h1 id="enunt-problema">Enuntul problemei</h1>
+          <h1 id="enunt-problema">{{ name }}</h1>
           <span id="continut-problema">
-          Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal
-          Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal
-          Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal
-          Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal
-          Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal Alalalallalalallal vAlalalallalalallal Alalalallalalallal Alalalallalalallal
-        </span>
+            {{ descr }}
+          </span>
         </div>
           <textarea class="code-editor" id="code-editor" onInput="this.parentNode.dataset.replicatedValue = this.value"></textarea>
       </div>
@@ -104,127 +104,26 @@
               <div class="col-6">
                 <h2 class="card-title">Here are your results:</h2>
                 <hr class="gray line" style="height: 3px;">
-                <p class="card-text">[2 passed/3 warning/1 failed]</p>
+                <p class="card-text" id="title">[Waiting for submit...]</p>
               </div>
             </div>
           </div>
         </div>
 
-        <!--row1--><!--row1--><!--row1-->
-        <div class="row">
-
-          <div class="col-6">
-            <div class="card csuccess" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 1</h2>
-                  <hr class="green line" style="height: 3px;">
-                  <p class="card-text">Well done!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-check-circle-fill icon-test check"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="card csuccess" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 2</h2>
-                  <hr class="green line" style="height: 3px;">
-                  <p class="card-text">Well done!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-check-circle-fill icon-test check"></i>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div id="clearable">
+        <div id="results">
 
         </div>
-
-        <!--row2--><!--row2--><!--row2-->
-        <div class="row">
-
-          <div class="col-6">
-            <div class="card cwarning" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 3</h2>
-                  <hr class="yellow line" style="height: 3px;">
-                  <p class="card-text">Warning!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="card cwarning" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 4</h2>
-                  <hr class="yellow line" style="height: 3px;">
-                  <p class="card-text">Warning!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
         </div>
-
-        <!--row3--><!--row3--><!--row3-->
-        <div class="row">
-
-          <div class="col-6">
-            <div class="card cwarning" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 5</h2>
-                  <hr class="yellow line" style="height: 3px;">
-                  <p class="card-text">Warning!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-exclamation-triangle-fill icon-test warning"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-6">
-            <div class="card cdanger" type="button">
-              <div class="row">
-                <div class="col-3">
-                  <h2 class="card-title">Test 6</h2>
-                  <hr class="red line" style="height: 3px;">
-                  <p class="card-text">Failed!</p>
-                </div>
-                <div class="col-8 ">
-                  <i class="bi bi-x-circle-fill icon-test fail"></i>
-                </div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-      </div><!--endcol-6-->
-
-    </div><!--endRow-->
-
+      </div>
 
     <!--buttons --><!--buttons --><!--buttons --><!--buttons --><!--buttons --><!--buttons -->
-    <button class="button-submit" role="button">Submit</button>
+    <div>
+    <button class="button-submit" role="button" onclick="evaluatePython()">Submit</button>
     <button class="button-retry"  role="button">Retry</button>
     <button class="button-back" role="button">Back</button>
     <button class="button-next" role="button">Next</button>
+    </div>
 
     <!--footer--><!--footer--><!--footer--><!--footer--><!--footer-->
     <div class="footer">

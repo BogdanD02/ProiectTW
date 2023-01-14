@@ -16,8 +16,8 @@ urlpatterns = [
     path('main/<str:name>/courses/browse', views.browse_courses),
 
     path('main/<str:name>/tests/<int:id>', views.demo),
-    path('main/<str:name>/tests/<int:id>/evaluate', views.run_evaluation),
     path('main/<str:name>/tests/', views.show_tests),
-    path('main/<str:name>/tests/add', views.add_test)
+    path('main/<str:name>/tests/add', views.add_test),
 
+    path('tests/generateOutput/<int:id>', views.get_output)
 ]
