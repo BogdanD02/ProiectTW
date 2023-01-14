@@ -21,7 +21,7 @@ def get_output(request, id):
     jsonData = {
         'testCases': []
     }
-    spec = importlib.util.spec_from_file_location(test.output_generator, 'sources/' + test.output_generator + '.py')
+    spec = importlib.util.spec_from_file_location(test.output_generator, 'sources/' + test.title + '.py')
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
 
@@ -82,7 +82,7 @@ def add_test(request, name):
             due_date = datetime.strptime(stop_str, '%Y-%m-%d %H:%M'),
         )
 
-        with open("sources/" + test.title + ".py") as f:
+        with open("sources/" + test.title + ".py", "x") as f:
             f.write(test.output_generator)
 
         test.save()
