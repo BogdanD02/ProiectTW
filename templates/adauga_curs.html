@@ -47,7 +47,7 @@
             </a>
             <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <a class="dropdown-item" href="#">View tests</a>
-                <a class="dropdown-item" href="#">Add new test</a>
+                <a class="dropdown-item" href="{{ name }}/tests/add">Add new test</a>
             </div>
           </div>
         </div>
@@ -62,7 +62,7 @@
             </button>
                 <div class="dropdown-menu pull-right" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" href="#">Profile</a>
-                  <a class="dropdown-item" href="#">Log out</a>
+                  <a class="dropdown-item" href="/">Log out</a>
                 </div>
           </div>
         </div>
@@ -93,9 +93,11 @@
       <div class="column">
           <div class="card">
             <h3>Lessons</h3>
-                   <div class="inner"><button class="button" role="button">Lesson 1</button></div>
-                   <div class="inner"> <button class="btn-delete"><i class="glyphicon glyphicon-trash"></i></button></div>
-                   <div class="inner"> <button class="btn-edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+                  {% for i in lessons %}
+                   <div class="inner"><button class="button" id="lesson{{ i }}" role="button">Lesson {{ i }}</button></div>
+                   <div class="inner"> <button class="btn-delete" id="lesson{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
+                   <div class="inner"> <button class="btn-edit" id="lesson{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+                  {% endfor %}
             <button class="button1" role="button">Add lesson</button>
           </div>
         </div>
@@ -103,9 +105,11 @@
           <div class="column">
             <div class="card">
               <h3>Exercises</h3>
-                  <div class="inner"><button class="button" role="button" data-inline="true" data-mini="true">Exercise 1 </button></div>
-                  <div class="inner"><button class="btn-delete"><i class="glyphicon glyphicon-trash" data-inline="true" data-mini="true"></i></button></div>
-                  <div class="inner"><button class="btn-edit"><i class="glyphicon glyphicon-pencil" data-inline="true" data-mini="true"></i></button></div>
+              {% for i in exercises %}
+              <div class="inner"><button class="button" id="exercise{{ i }}" role="button">Exercise {{ i }}</button></div>
+              <div class="inner"> <button class="btn-delete" id="exercise{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
+              <div class="inner"> <button class="btn-edit" id="exercise{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+              {% endfor %}
               <button class="button1" role="button">Add exercise</button>
             </div>
           </div>
@@ -113,16 +117,16 @@
           <div class="column">
             <div class="card">
               <h3>Homeworks</h3>
-          
-                  <div class="inner"><button class="button" role="button">Homework 1</button></div>
-                  <div class="inner"><button class="btn-delete"><i class="glyphicon glyphicon-trash"></i></button></div>
-                  <div class="inner"><button class="btn-edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
-             
+                {% for i in homeworks %}
+                  <div class="inner"><button class="button" id="homework{{ i }}" role="button">Homework {{ i }}</button></div>
+                  <div class="inner"> <button class="btn-delete" id="homework{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
+                  <div class="inner"> <button class="btn-edit" id="homework{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+                {% endfor %}
               <button class="button1" role="button">Add homework</button>
             </div>
           </div>
     <!--content-->
-
+    <script src="{% static 'js/style_add_course.js' %}" defer data-data="{{ data }}"></script>
 
     <!--footer--><!--footer--><!--footer--><!--footer--><!--footer-->
     <div class="footer">

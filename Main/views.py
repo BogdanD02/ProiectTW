@@ -44,7 +44,7 @@ def welcome(request, name):
         if name == "David":
             return render(request, 'welcome-prof.html', {'name': name})
 
-        tests = Test.objects.all()
+        tests = Test.objects.filter(homework=0, exercise=0)
         return render(request, 'welcome.html', {'name': name, 'tests': [i+1 for i in range(len(tests))]})
 
 def show_courses(request, name):

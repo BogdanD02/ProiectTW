@@ -207,6 +207,30 @@ body {
 
 /*butoane*/
 
+
+.button{
+  font-family: 'Hammersmith One', sans-serif;
+  font-size: 15px;
+  color: rgb(0, 0, 0);
+  position: absolute;
+  left: 30%;
+  text-align: center;
+  
+  -webkit-transform: translate3d(-50%, -50%, 0);
+  -o-transform: translate3d(-50%, -50%, 0);
+  
+  -webkit-border-radius: 8;
+  border:none;
+  background: none;
+  text-decoration: none;
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  border: none;
+  cursor: pointer;
+}
+
+
+
 .button1 {
   font-family: 'Hammersmith One', sans-serif;
   font-size: 12px;
@@ -225,7 +249,6 @@ body {
   padding: 10px 20px 10px 20px;
   text-decoration: none;
   -webkit-transition-duration: 0.7s;
-  /* Safari */
   transition-duration: 0.7s;
   border: none;
   cursor: pointer;
@@ -236,62 +259,11 @@ body {
   color: black;
 }
 
-.button2 {
-  font-family: 'Hammersmith One', sans-serif;
-  font-size: 15px;
-  font-weight: 700;
-  color: rgb(0, 0, 0);
-  position: absolute;
-  top: 40%;
-  left: 50%;
-  text-align: center;
-  
-  -webkit-transform: translate3d(-50%, -50%, 0);
-  -o-transform: translate3d(-50%, -50%, 0);
-  
-  -webkit-border-radius: 8;
-  border:none;
-  background: none;
-  -webkit-transition-duration: 0.3s;
-  transition-duration: 0.3s;
-  border: none;
-  cursor: pointer;
-}
-.button2:hover {
-  background: none;
-  color:#c2a90c
-}
-
-
-.btn-delete {
-  font-size: 16px;
-  color: red;
-  border:none;
-  background: none;
-  text-decoration: none;
-  position: absolute;
-  top: 28%;
-  left: 70%;
-}
-
-
-.btn-edit {
-  font-size: 16px;
-  color: #c2a90c;
-  border:none;
-  background: none;
-  text-decoration: none;
-  position: absolute;
-  top: 28%;
-  left: 50%;
-}
-
-.button{
+.button2{
   font-family: 'Hammersmith One', sans-serif;
   font-size: 15px;
   color: rgb(0, 0, 0);
   position: absolute;
-  top: 30%;
   left: 30%;
   text-align: center;
   
@@ -305,7 +277,48 @@ body {
   -webkit-transition-duration: 0.3s;
   transition-duration: 0.3s;
   border: none;
-  cursor: pointer;
+  cursor: pointer;;
+}
+
+
+.btn-delete {
+  font-size: 16px;
+  color: red;
+  border:none;
+  background: none;
+  text-decoration: none;
+  position: absolute;
+  left: 70%;
+}
+.btn2-delete {
+  font-size: 16px;
+  color: red;
+  border:none;
+  background: none;
+  text-decoration: none;
+  position: absolute;
+  left: 70%;
+}
+
+.btn-edit {
+  font-size: 16px;
+  color: #c2a90c;
+  border:none;
+  background: none;
+  text-decoration: none;
+  position: absolute;
+  left: 50%;
+}
+
+.btn2-edit {
+  font-size: 16px;
+  color: #c2a90c;
+  border:none;
+  background: none;
+  text-decoration: none;
+  position: absolute;
+  top: 38%;
+  left: 50%;
 }
 
 

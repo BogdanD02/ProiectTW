@@ -20,6 +20,7 @@ class Test(models.Model):
     no_test_cases = models.IntegerField()
     save_sources = models.IntegerField()
     homework = models.IntegerField()
+    exercise = models.IntegerField()
     due_date = models.DateTimeField()
     start_date = models.DateTimeField()
 
