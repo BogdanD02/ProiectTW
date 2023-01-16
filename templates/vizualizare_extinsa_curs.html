@@ -76,34 +76,27 @@
     <div class="column">
         <div class="card">
           <h3>Lessons</h3>
-                 <div class="inner"><button class="button1" role="button">Lesson 1</button></div>
-                 <div class="inner"><button class="button2" role="button">Lesson 2</button></div>
-                 <div class="inner"><button class="button3" role="button">Lesson 3</button></div>
-                 <div class="inner"><button class="button4" role="button">Lesson 4</button></div>
-                 
+          {% for i in lessons %}
+          <div class="inner"><button class="button{{ i }}" role="button">Lesson {{ i }}</button></div>
+          {% endfor %}                 
         </div>
       </div>
 
         <div class="column">
           <div class="card">
             <h3>Exercises</h3>
-                <div class="inner"><button class="button1" role="button" data-inline="true" data-mini="true">Exercise 1 </button></div>
-                <div class="inner"><button class="button2" role="button" data-inline="true" data-mini="true">Exercise 2 </button></div>
-                <div class="inner"><button class="button3" role="button" data-inline="true" data-mini="true">Exercise 3 </button></div>
-                <div class="inner"><button class="button4" role="button" data-inline="true" data-mini="true">Exercise 4 </button></div>
-               
+            {% for i in exercises %}
+            <div class="inner"><button class="button1" role="button" data-inline="true" data-mini="true">Exercise {{ i }} </button></div>  
+            {% endfor %}
           </div>
         </div>
       
         <div class="column">
           <div class="card">
             <h3>Homeworks</h3>
-        
-                <div class="inner"><button class="button1" role="button">Homework 1</button></div>
-                <div class="inner"><button class="button2" role="button">Homework 2</button></div>
-                <div class="inner"><button class="button3" role="button">Homework 3</button></div>
-                <div class="inner"><button class="button4" role="button">Homework 4</button></div>
-                
+            {% for i in homeworks %}
+            <div class="inner"><button class="button{{ i }}" role="button">Homework {{ i }}</button></div>
+            {% endfor %}
           </div>
         </div>
             <div>

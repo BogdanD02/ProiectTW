@@ -76,19 +76,22 @@
  
     <div class="column">
         <div class="card1">
-          <form>
+          <form method="post" action="/main/{{ name }}/courses/add_homework/post">
+            {% csrf_token %}
             <label for="fname">Homework No.</label><br>
-            <input type="text" id="title" name="title"><br>
+            <input type="text" id="title" name="title" value="{{ title }}"><br>
             <br><label for="lname">Description</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <textarea rows="5" cols="35" name="descr">{{ descr }}</textarea><br>
             <br><label for="lname">Input format</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <textarea rows="5" cols="35" name="input">{{ input }}</textarea><br>
             <br><label for="lname">Output format</label><br>
-            <textarea rows="5" cols="35"></textarea><br>
+            <textarea rows="5" cols="35" name="output">{{ output }}</textarea><br>
+            <input type="hidden" id="title2" name="context" value="{{ context }}"><br>
+            <input type="hidden" id="title3" name="idEdit" value="{{ idEdit }}"><br>
             <label for="start">Due date:</label>
-            <input type="date" id="start" name="trip-start"
-            value="2023-01-20" min="2023-01-01" max="2024-12-31">
-            <br><button class="button1" role="button">Add homework</button>
+            <input type="date" id="start" name="date"
+            value="{{ date }}" min="2023-01-01" max="2024-12-31">
+            <br><button class="button1" role="button" type="submit">Add homework</button>
           </form> 
               
         </div>

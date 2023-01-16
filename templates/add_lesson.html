@@ -77,14 +77,16 @@
     <div class="column">
         <div class="card1">
           <h3>Course details</h3>
-          <form>
+          <form method="post" action="/main/{{ name }}/courses/add_lesson/post">
+            {% csrf_token %}
             <label for="fname">Lesson title:</label><br>
-            <input type="text" id="title" name="title"><br>
+            <input type="text" id="title" name="title" value="{{ titleEdit }}"><br>
+            <input type="hidden" id="title2" name="context" value="{{ context }}"><br>
+            <input type="hidden" id="title3" name="idEdit" value="{{ idEdit }}"><br>
             <br><label for="lname">Lesson content:</label><br>
-            <textarea rows="10" cols="65"></textarea><br>
-        
-          </form> 
-          <button class="button1" role="button">Add lesson</button>      
+            <textarea rows="10" cols="65" name="descr">{{ descrEdit }}</textarea><br>
+            <button class="button1" type="submit" role="button">Add lesson</button>   
+          </form>    
         </div>
       </div>
     <!--content-->

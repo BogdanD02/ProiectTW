@@ -1,8 +1,8 @@
 
 class Literal {
     constructor(identifier, dataType, range) {
-        this.ID = identifier;
-        this.DT = dataType;
+        this.ID = identifier;                 
+        this.DT = dataType;                   
         this.range = this.getDataRange(range);
     }
 
@@ -57,7 +57,3 @@ class Literal {
         }
     }
 }
-
-var text = document.getElementById("input");
-
-var l = Literal("1", "1", text.getValue());

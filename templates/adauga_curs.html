@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
     <link href="{% static 'css/adauga_curs.css' %}" rel="stylesheet">
     <link href="{% static 'css/common.css' %}" rel="stylesheet">
+    <script src="{% static 'js/send_post.js' %}" defer data-data="{{ page_data }}"></script>
   </head>
   <body>
     <!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar--><!--navbar-->
@@ -77,14 +78,16 @@
       <div class="column">
         <div class="card1">
           <h3>Course details</h3>
-          <form action="/action_page.php">
+          <form method="post">
+            {% csrf_token %}
             <label for="fname">Course title:</label>
-            <input type="text" id="title" name="title"><br>
+            <input type="text" id="title" name="title" value="{{ title }}"><br>
             <br><label for="lname">Description:</label>
-            <textarea rows="10" cols="55"></textarea><br>
+            <textarea rows="10" cols="55" name="descr" value="{{ descr }}"></textarea><br>
+            <input type="hidden" id="title3" name="context" value="{{ context }}"><br>
             <br> <label for="avatar">Choose a course image:</label>
             <center><input type="file" id="avatar" name="avatar" accept="image/png, image/jpeg"></center>
-
+            <button class="button1" role="button" type="submit">Add course</button>
           </form> 
               
         </div>
@@ -95,10 +98,10 @@
             <h3>Lessons</h3>
                   {% for i in lessons %}
                    <div class="inner"><button class="button" id="lesson{{ i }}" role="button">Lesson {{ i }}</button></div>
-                   <div class="inner"> <button class="btn-delete" id="lesson{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
-                   <div class="inner"> <button class="btn-edit" id="lesson{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+                   <div class="inner"> <button class="btn-delete" id="lesson{{ i }}_del" onclick="deleteLesson({{ i }})"><i class="glyphicon glyphicon-trash"></i></button></div>
+                   <div class="inner"> <button class="btn-edit" id="lesson{{ i }}_edit" onclick="editLesson({{ i }})"><i class="glyphicon glyphicon-pencil"></i></button></div>
                   {% endfor %}
-            <button class="button1" role="button">Add lesson</button>
+            <button class="button1" role="button" onclick="add_lesson()">Add lesson</button>
           </div>
         </div>
   
@@ -107,10 +110,10 @@
               <h3>Exercises</h3>
               {% for i in exercises %}
               <div class="inner"><button class="button" id="exercise{{ i }}" role="button">Exercise {{ i }}</button></div>
-              <div class="inner"> <button class="btn-delete" id="exercise{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
-              <div class="inner"> <button class="btn-edit" id="exercise{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+              <div class="inner"> <button class="btn-delete" id="exercise{{ i }}_del" onclick="deleteExercise({{ i }})"><i class="glyphicon glyphicon-trash"></i></button></div>
+              <div class="inner"> <button class="btn-edit" id="exercise{{ i }}_edit" onclick="editExercise({{ i }})"><i class="glyphicon glyphicon-pencil"></i></button></div>
               {% endfor %}
-              <button class="button1" role="button">Add exercise</button>
+              <button class="button1" role="button" onclick="add_exercise()">Add exercise</button>
             </div>
           </div>
         
@@ -119,14 +122,14 @@
               <h3>Homeworks</h3>
                 {% for i in homeworks %}
                   <div class="inner"><button class="button" id="homework{{ i }}" role="button">Homework {{ i }}</button></div>
-                  <div class="inner"> <button class="btn-delete" id="homework{{ i }}_del"><i class="glyphicon glyphicon-trash"></i></button></div>
-                  <div class="inner"> <button class="btn-edit" id="homework{{ i }}_edit"><i class="glyphicon glyphicon-pencil"></i></button></div>
+                  <div class="inner"> <button class="btn-delete" id="homework{{ i }}_del" onclick="deleteHomework({{ i }})"><i class="glyphicon glyphicon-trash"></i></button></div>
+                  <div class="inner"> <button class="btn-edit" id="homework{{ i }}_edit" onclick="editHomework({{ i }})"><i class="glyphicon glyphicon-pencil"></i></button></div>
                 {% endfor %}
-              <button class="button1" role="button">Add homework</button>
+              <button class="button1" role="button" onclick="add_homework()">Add homework</button>
             </div>
           </div>
     <!--content-->
-    <script src="{% static 'js/style_add_course.js' %}" defer data-data="{{ data }}"></script>
+    <script src="{% static 'js/style_add_course.js' %}"></script>
 
     <!--footer--><!--footer--><!--footer--><!--footer--><!--footer-->
     <div class="footer">

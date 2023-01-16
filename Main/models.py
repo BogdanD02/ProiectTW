@@ -5,7 +5,6 @@ from django.contrib.auth.models import User
 class Lesson(models.Model):
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=255)
-    lesson_type = models.CharField(max_length=30)
     teacher = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Lecture(models.Model):
@@ -23,6 +22,10 @@ class Test(models.Model):
     exercise = models.IntegerField()
     due_date = models.DateTimeField()
     start_date = models.DateTimeField()
+
+class Linkage(models.Model):
+    lesson = models.ForeignKey(Lesson, on_delete=models.CASCADE)
+    test = models.ForeignKey(Test, on_delete=models.CASCADE)
 
 class Input(models.Model):
     data_type = models.CharField(max_length=30)
