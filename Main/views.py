@@ -42,7 +42,7 @@ def get_output(request, id):
 
 def welcome(request, name):
     if request.method == 'GET':
-        if name == "David":
+        if name == "Oana":
             return render(request, 'welcome-prof.html', {'name': name})
 
         tests = Test.objects.filter(homework=0, exercise=0)
@@ -71,7 +71,7 @@ def view_course(request, name):
 def show_courses(request, name):
     usr = User.objects.get(last_name=name)
 
-    if name == 'David':
+    if name == 'Oana':
         lessons = Lesson.objects.filter(teacher=usr)
     else:
         lessons = Lesson.objects.all()
@@ -92,7 +92,7 @@ def show_courses(request, name):
     return render(request, 'view_courses.html', context)
 
 def add_course(request, name):
-    if name != "David":
+    if name != "Oana":
         return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
     context = {}
     context["name"] = name
@@ -229,7 +229,7 @@ def add_course(request, name):
     return render(request, 'adauga_curs.html', context)
 
 def add_lesson(request, name):
-    if name != "David":
+    if name != "Oana":
         return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
 
     if 'edit' in request.GET:
@@ -266,7 +266,7 @@ def add_lesson2(request, name):
 
 
 def add_ex(request, name):
-    if name != "David":
+    if name != "Oana":
         return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
 
     if 'edit' in request.GET:
@@ -336,7 +336,7 @@ def add_hw2(request, name):
         return redirect('/main/' + name + '/courses/add?context=' + json.dumps(jsonD))
 
 def add_hw(request, name):
-    if name != "David":
+    if name != "Oana":
         return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
 
     if 'edit' in request.GET:
@@ -353,12 +353,12 @@ def add_hw(request, name):
         return render(request, 'add_hw.html', {'context': request.GET['context'], 'name': name})
 
 def show_tests(request, name):
-    if name != "David":
+    if name != "Oana":
         return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
 
 def add_test(request, name):
     if request.method == 'GET':
-        if name != "David":
+        if name != "Oana":
             return render(request, 'error.html', {'err': 401}, content_type="text/html", status=401)
         return render(request, 'add_test.html')
     
